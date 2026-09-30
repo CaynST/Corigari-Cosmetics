@@ -47,21 +47,32 @@
 
   <main id="contenido">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__content container">
-        <p class="hero__eyebrow">Cosmética orgánica certificada</p>
-        <h1 class="hero__title" id="hero-title">
-          Belleza natural para tu piel
-        </h1>
-        <p class="hero__text">
-          Fórmulas limpias elaboradas con ingredientes botánicos, libres de
-          crueldad y respetuosas con el planeta.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#productos">Descubrir productos</a>
-          <a class="btn btn--ghost" href="#nosotros">Conoce Corigari</a>
-        </div>
-      </div>
       <div class="hero__decor" aria-hidden="true"></div>
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Cosmética orgánica certificada</p>
+          <h1 class="hero__title" id="hero-title">
+            Belleza natural para tu piel
+          </h1>
+          <p class="hero__text">
+            Fórmulas limpias elaboradas con ingredientes botánicos, libres de
+            crueldad y respetuosas con el planeta.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#productos">Descubrir productos</a>
+            <a class="btn btn--ghost" href="#nosotros">Conoce Corigari</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img
+            src="https://images.unsplash.com/photo-1655026392641-bf283a5f12d4?auto=format&fit=crop&w=1400&q=70"
+            alt="Mujer aplicando una gota de suero facial con un gotero de vidrio"
+            width="1400"
+            height="1750"
+            fetchpriority="high"
+          />
+        </figure>
+      </div>
     </section>
 
     <section class="section section--soft" id="nosotros" aria-labelledby="nosotros-title">
@@ -80,7 +91,15 @@
             <li>Envases reciclables y reutilizables</li>
           </ul>
         </div>
-        <div class="about__image" role="img" aria-label="Productos naturales Corigari"></div>
+        <div class="about__image">
+          <img
+            src="https://images.unsplash.com/photo-1585328000852-779be6a6582b?auto=format&fit=crop&w=1000&q=70"
+            alt="Hojas verdes con gotas de agua fresca, ingredientes botánicos de Corigari"
+            width="1000"
+            height="1000"
+            loading="lazy"
+          />
+        </div>
       </div>
     </section>
 
@@ -96,21 +115,45 @@
 
         <div class="cards">
           <article class="card">
-            <div class="card__media card__media--green" aria-hidden="true"></div>
+            <div class="card__media card__media--green">
+              <img
+                src="https://images.unsplash.com/photo-1766241884020-a86f15ad24b8?auto=format&fit=crop&w=700&q=70"
+                alt="Sérum Facial Verde en frasco de vidrio con gotero"
+                width="700"
+                height="700"
+                loading="lazy"
+              />
+            </div>
             <h3 class="card__title">Sérum Facial Verde</h3>
             <p class="card__text">Hidratación profunda con aloe vera y té verde.</p>
             <span class="card__price">$24.900</span>
           </article>
 
           <article class="card">
-            <div class="card__media card__media--blue" aria-hidden="true"></div>
+            <div class="card__media card__media--blue">
+              <img
+                src="https://images.unsplash.com/photo-1763986668655-413d55a24f6a?auto=format&fit=crop&w=700&q=70"
+                alt="Crema Agua Marina en frasco transparente con burbujas sobre fondo azul"
+                width="700"
+                height="700"
+                loading="lazy"
+              />
+            </div>
             <h3 class="card__title">Crema Agua Marina</h3>
             <p class="card__text">Textura ligera con ácido hialurónico y algas.</p>
             <span class="card__price">$29.900</span>
           </article>
 
           <article class="card">
-            <div class="card__media card__media--pink" aria-hidden="true"></div>
+            <div class="card__media card__media--pink">
+              <img
+                src="https://images.unsplash.com/photo-1765964492963-b0aa8c172431?auto=format&fit=crop&w=700&q=70"
+                alt="Bálsamo Rosa Suave en frasco pequeño con flores rosas sobre mármol"
+                width="700"
+                height="700"
+                loading="lazy"
+              />
+            </div>
             <h3 class="card__title">Bálsamo Rosa Suave</h3>
             <p class="card__text">Calma y nutre con aceite de rosa mosqueta.</p>
             <span class="card__price">$21.900</span>
