@@ -329,6 +329,36 @@
     </section>
   </main>
 
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="container cta__inner">
+      <div class="cta__text">
+        <h2 class="cta__title" id="cta-title">Únete al club Corigari</h2>
+        <p>
+          Recibe rutinas de belleza, lanzamientos y un 10% de descuento en tu
+          primera compra.
+        </p>
+      </div>
+
+      <form class="cta__form" id="newsletter-form" novalidate>
+        <label class="visually-hidden" for="newsletter-email">Correo electrónico</label>
+        <div class="cta__controls">
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            placeholder="tu@correo.com"
+            autocomplete="email"
+            required
+            aria-describedby="error-newsletter"
+          />
+          <button class="btn btn--primary" type="submit">Suscribirme</button>
+        </div>
+        <p class="field__error" id="error-newsletter" role="alert" hidden></p>
+        <p class="form__status" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </section>
+
   <footer class="site-footer" id="pie">
     <div class="container footer__grid">
       <div class="footer__brand">
@@ -359,6 +389,19 @@
       &copy; <span id="year"></span> Corigari. Todos los derechos reservados.
     </p>
   </footer>
+
+  <button class="to-top" type="button" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="m6 14 6-6 6 6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
 
   <script src="js/main.js" defer></script>
 </body>
