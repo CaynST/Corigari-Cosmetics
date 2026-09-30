@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll();
   initContactForm();
   initNewsletterForm();
+  initReveal();
+  initCounters();
 });
 
 function initYear() {
@@ -191,4 +193,87 @@ function initNewsletterForm() {
     status.classList.add("form__status--success");
     status.hidden = false;
   });
+}
+
+const REVEAL_SELECTOR = [
+  ".section__header",
+  ".about__text",
+  ".about__image",
+  ".card",
+  ".testimonial",
+  ".stat",
+  ".contact__intro",
+  ".contact__form",
+  ".cta__inner",
+].join(",");
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function initReveal() {
+  const elements = document.querySelectorAll(REVEAL_SELECTOR);
+  if (elements.length === 0) return;
+
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+    elements.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  elements.forEach((el) => {
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
+}
+
+function initCounters() {
+  const values = document.querySelectorAll(".stat__value");
+  if (values.length === 0) return;
+
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) return;
+
+  const animate = (el) => {
+    const match = el.textContent.trim().match(/^(\D*)(\d+)(\D*)$/);
+    if (!match) return;
+
+    const [, prefix, digits, suffix] = match;
+    const target = parseInt(digits, 10);
+    const duration = 1400;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = `${prefix}${Math.round(target * eased)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  values.forEach((el) => observer.observe(el));
 }

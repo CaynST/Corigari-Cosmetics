@@ -875,6 +875,18 @@ p {
   margin: 0;
 }
 
+/* ---------- Motion ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero__inner {
@@ -950,6 +962,11 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 
   *,
