@@ -230,6 +230,14 @@ p {
   width: 100%;
 }
 
+.navbar__menu a.is-active {
+  color: var(--color-green-dark);
+}
+
+.navbar__menu a.is-active::after {
+  width: 100%;
+}
+
 .navbar__toggle {
   display: none;
   flex-direction: column;

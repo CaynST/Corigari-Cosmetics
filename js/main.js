@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initNewsletterForm();
   initReveal();
   initCounters();
+  initActiveNav();
+  initBackToTop();
 });
 
 function initYear() {
@@ -276,4 +278,57 @@ function initCounters() {
   );
 
   values.forEach((el) => observer.observe(el));
+}
+
+function initActiveNav() {
+  const links = Array.from(
+    document.querySelectorAll(".navbar__menu a[href^='#']")
+  );
+  if (links.length === 0 || !("IntersectionObserver" in window)) return;
+
+  const linkBySection = new Map();
+  links.forEach((link) => {
+    const id = link.getAttribute("href").slice(1);
+    const section = id ? document.getElementById(id) : null;
+    if (section) linkBySection.set(section, link);
+  });
+
+  const setActive = (activeLink) => {
+    links.forEach((link) =>
+      link.classList.toggle("is-active", link === activeLink)
+    );
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const link = linkBySection.get(entry.target);
+          if (link) setActive(link);
+        }
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+
+  linkBySection.forEach((_, section) => observer.observe(section));
+}
+
+function initBackToTop() {
+  const button = document.querySelector(".to-top");
+  if (!button) return;
+
+  const toggleVisibility = () => {
+    button.classList.toggle("is-visible", window.scrollY > 400);
+  };
+
+  button.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+  });
+
+  toggleVisibility();
+  window.addEventListener("scroll", toggleVisibility, { passive: true });
 }
