@@ -111,6 +111,21 @@ p {
   border: 0;
 }
 
+:focus-visible {
+  outline: 3px solid var(--color-aqua-dark);
+  outline-offset: 3px;
+}
+
+.cta :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--color-white);
+}
+
+section[id],
+header[id] {
+  scroll-margin-top: 5rem;
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
